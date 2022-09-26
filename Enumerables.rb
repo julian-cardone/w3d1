@@ -44,7 +44,7 @@ class Array
 
     def my_flatten
 
-        return self if !(self.my_any? {|i| i.is_a? Array})
+        return flatten if !(flatten.my_any? {|i| i.is_a? Array})
 
         #return [self] if !self.is_a? Array
 
@@ -53,7 +53,7 @@ class Array
             if !r.is_a? Array
                 flatten << r
             else
-            flatten += [r.my_flatten]
+            r.my_flatten
             end
         end
         return flatten
