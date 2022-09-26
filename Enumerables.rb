@@ -53,7 +53,7 @@ class Array
             if !r.is_a? Array
                 flatten << r
             else
-            flatten += [r.my_flatten]
+                r.my_flatten
             end
         end
         return flatten
@@ -70,7 +70,7 @@ end
 # p a.my_reject { |num| num > 1 } # => [1]
 # p a.my_reject { |num| num == 4 } # => [1, 2, 3]
 
-a = [1, 2, 3]
+# a = [1, 2, 3]
 # p a.my_any? { |num| num > 1 } # => true
 # p a.my_any? { |num| num == 4 } # => false
 # p a.my_all? { |num| num > 1 } # => false
