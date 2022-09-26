@@ -53,7 +53,7 @@ class Array
             if !r.is_a? Array
                 flatten << r
             else
-            r.my_flatten
+                r.my_flatten
             end
         end
         return flatten
