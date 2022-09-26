@@ -42,11 +42,21 @@ class Array
         true
     end
 
-    def my_flatten(data)
-        return [data] if !data.is_a? Array
+    def my_flatten
+
+        return self if !(self.my_any? {|i| i.is_a? Array})
+
+        #return [self] if !self.is_a? Array
+
+        flatten = []
         self.my_each do |r|
-            my_flatten(r)
+            if !r.is_a? Array
+                flatten << r
+            else
+            flatten += [r.my_flatten]
+            end
         end
+        return flatten
     end
 
 
@@ -66,4 +76,4 @@ a = [1, 2, 3]
 # p a.my_all? { |num| num > 1 } # => false
 # p a.my_all? { |num| num < 4 } # => true
 
-[1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
+p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
